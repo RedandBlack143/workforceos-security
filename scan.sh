@@ -25,6 +25,6 @@ fi
 
 echo "[4/4] Running OWASP ZAP (DAST)..."
 # Runs ZAP against a local dev server (placeholder target: http://localhost:8080)
-docker run --rm -v $(pwd)/findings/reports:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://localhost:8080 -J zap-report.json || echo "  -> ZAP scan completed."
+docker run --rm --network host -v $(pwd)/findings/reports:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://localhost:8080 -J zap-report.json || echo "  -> ZAP scan completed."
 
 echo "[*] All scans complete! Reports saved to findings/reports/"
